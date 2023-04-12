@@ -1,10 +1,20 @@
-ders 29
-*******************
-konular:kalıtım
-**********************
--C++ 'da yer alan kalıtım nesne yönelimli programlamadan biraz farklı.
+c++ ders 29
+*****************
+konular: inheritance
+***************************
 
--kalıtım deyince C++ programcısı için gelenekselden daha kapsamlı.
+-daha önce has a relationship ilişkisini gördük ve şimdi is a relationship ilişkisini görüyoruz.
+	-has a relationship
+	-is a relationship
+-nesne yönelimli programlamada olan kalıtım ile C++'da olan kalıtım bire bir aynı değil.
+-super class = parent class = base class
+-subclass = child class = derived class 
+-inherit = derivation
 
--has a relationship
--is a relationship
+
+-multiple inheritance: bir sınıfı 2 sınıftan türetmek
+
+-java c# gibi dillerde kalıtım dendiğinde is a relationship'ten başka bir varlık nedeni yok. C++ da bu durum farklı:
+	-public inhetitance : java 'daki is a relationship
+	-private inheritance
+	-protected inheritance
