@@ -1,0 +1,101 @@
+ders 22
+******************************
+konular: class static data members,class static member functions,factory design,singletone
+çalış: fonksiyon pointer, decltype
+!!fonksiyon pointer'larına çalış.
+***************************************
+
+-inserter function ?
+-static veri elemanları sınıf verisine ait değil ve fiziksel olarak sınıfın içinde değil.
+-Bildiğimiz global değişken gibi C'deki karşılığı global değişken. sadece class scope içinde.
+ 
+
+!!!!!static değişken tanımladığında eğer instance yoksa linker hatası alırsın=> unresolved  externall 
+
+-sınıf içinde static değişken tanımlanır fakat sınıf dışında tanımı yapılır.
+-bir sınıfın non-static veri elemanı incomplete type olamaz.
+-bir sınıfın kendi türünden static veri elemanına sahip olması geçerlidir.
+-sınıf kendi türünden elemana sahip olamaz.
+-static veri elemanı sınıf içinde initialize edilemezler. ctor init list sınıfın non-static veri elemanlarını initialize etmeye yöneliktir.
+-non-static elemanlar: instances veri elemanları fakat static elemanlar: classes veri elemanları.
+
+ 
+
+-mutex ??
+-static initialization fiasco :  hangi cpp'deki static değişkenin hayata önce geleceği bilinmiyor.
+-cpp 17 ile sınıfın static değişkenleri için inline keyword ile tanımlama yapılıyor => inline static int x = 5;
+-static üye fonksiyonda this kullanamazsın.
+-sınıfın üye fonksiyonlarına verilen ilk değer önce sınıf scope içinde aranır sonra global scope.
+-static üye fonksiyonları instance yokken de çağırılabilir.
+-static fonksiyon ile constructor oluşturup aynı parametre ile farklı anlamlara sahip fonksiyonlar oluşturabilirsin. 
+
+!!!static class member'ları class içinde init edemezsin. Sadece integer ise ve const değer ise init edebilirsin.
+
+!!! C++ 17 standartı ile static ömürlü global değişkenler ve sınıfların static veri elemanları için artık inline anahtar sözcüğü ile tanımlama yapılabiliyor.
+
+!* ÖNEMLİ: inline ile tanımladığın değişkenleri derleyici obje koda özel bir şekilde yazıyor. Bütün cpp dosyalarında aynı referansta obje tanımlanmış oluyor.
+
+* constexpr keyword ile kullandığın ifadeler implicitly inline'dır.
+
+!!! Sınıfın static üye fonksiyonları sınıf için çağrılır fakat non-static üye fonksiyonları ise instance'lar için çağrılır.
+
+*static üye fonksiyonu sınıfın private bölümüne erişebilir.
+
+*sınıfın static üye fonksiyonuna nesne oluşturma görevi verebilirim. 
+
+//Aşağıdaki kodun sonucu 1'dir çünkü static üyeler fonksiyonu önce class scope içinde arar.
+
+class Sc
+{
+public:
+
+	static int foo()
+	{
+	   return 1;
+	}
+	static int s;
+
+}; 
+
+int foo()
+{
+	return 9;
+}
+
+int Sc::s = foo(); 
+
+önemli maddeler:
+
+   !!!ÖNEMLİ:: sınıf için kullanılan static int func() ile sınıfın static fonksiyonu farklı anlamlarda.
+
+   !static member function'ın this parametresi yoktur.
+
+   -sınıfın non-static const fonksiyonu sınıfın static veri elamanını değiştirebilir. Sınıf içinde static int sınıfın elamanı değil, puclic eleman gibidir.
+
+-------------------------------------
+
+-singletone kaçınılması gereken design patern:
+
+	-tek nesne olmalı.
+
+	-tek nesneye global bir access olmalı.
+
+	-kalıtım yapılacak mı ? hayatta mı olmalı yoksa kullanıldığı zaman mı hayata gelmeli ? dtor çağrılmalı mı ? sorularına göre implemente edilebilir.
+
+-patern çeşitleri =>
+
+	-creational paterns
+
+				   -factory
+
+				   -sigletone
+
+	-behavioural paterns
+
+----------------------------------
+
+patern => dilden bağımsız
+
+idiom (teknik benzeri ama teknik değil) => dile bağlı
+
+-----------------------------------------------------------------
