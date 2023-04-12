@@ -1,0 +1,54 @@
+ders 28
+**********************
+konular: maven
+***********************
+
+-cpp 20 sonrası three way comparassion :  <=>
+-str.compare(str2): birçok overload'ı var. Substringleri karşılaştırabilirsin.
+-lexicographical_compare() => STL karşılaştırma algoritmalarından biri.
+
+-string sınıfının reverse fonksiyonu yok ama genel reverse fonksiyonu var.
+-------------------------------
+!!!!!remove erase idiom ?? dk44 tekrar incele
+------------------------------------------
+string sınıfı arama fonksiyonları:
+*****arama fonksiyonlarının hepsinin geri dönüş değeri size_t. Normalde arama yap eğer geri dönüş değeri strşng:'in npos değeri ise bulunamadı. Değilse bulundu.
+**cpp 23 iile boolen değer döndüren func geldi
+-find :
+-rfind: arama sondan başa doğru yapılacak
+-find_first_not_of
+-find_first_of: 
+-find_last_not_of
+
+--------------------------
+**Regex: Regular Expressions
+-----------------------
+**cpp 17 ile eklenen string_view: 
+	-2 adet poiinter tutarak string'de istediğin substring'i döndürebilir. substr fonksiyonunu çağırırsan kopyalama oluyor ve ciddi maliyet.
+	-initializer list ile benzer fakat init list dizi oluşturuyor. 
+		-burda ise var olan bellek bloğundaki yazıya onu sahiplenmeyen 2 pointer atamış oluyorsun. string'in kendi pointer'ları data hiding ile gizli.
+	-yazının sahibi değil sadece gözlemcisi. kopya çıkarmak zorunda kalmıyorsun.
+	-eğer ana nesnenin ömrü biterse string view sınıfı içindeki pointer'lar dangling pointer olur.
+	-string sınıfının sahip olduğu tüm erişim interface'lerine sahip. (set değil.)
+	-akıllı poiinter sınıfı gibi değil.
+-------------------------------
+swap:
+	-kopyalama içeren swap işlemlerinden kaçınarak bu fonksiyonu kullan=> std::swap(s1,s2) veya s1.swap(s2)
+-----------------
+getline(cin,str,'!') boş karakterleri sil.
+---------------------
+stoi(): geri dönüş değeri int 
+stod(): geri dönüş değeri double
+stol(): geri dönüş değeri long
+-------------------------
+**ostringstream yazıyı fstream fibi dosya yerine bellekte tutar.
+--------------------------------------------
+avoid raw loops : C++ 'ın önemli ilkesi.
+	-ham döngüler sadece alt seviye kodlarda olmalı.
+	-size bulmak için kullanman gereken algoritma => count(str.begin(),str.end(),'a') mesela 
+	
+! do while()'dan kaçın
+-assign ve transform çalış
+---------------------
+-yazının bişeyle başlayıp başlamadığını bulmak => str.starts_with("alican")  =>>cpp23 ile geldi.
+-yazının 'a' içeriyor mu => str.contains("a")  =>>cpp23 ile geldi.

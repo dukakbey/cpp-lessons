@@ -1,0 +1,6 @@
+ders 24
+***********************
+konular: special member functions,nested types,pimple
+*****************************************
+
+enclosing type

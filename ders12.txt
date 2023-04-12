@@ -1,0 +1,92 @@
+ders 12
+*************************
+konular: classses devam, this pointer, sınıflarda const, mutable, constructor ve destructure başlangıç
+*************************************
+
+*mutater: void func(Myclass&)
+*accesser: void func(const Myclass&)
+
+*bir sınıf nesnesinin değişmesi demek elemanlarının değişmesi demek değildir.
+
+
+
+*class Myclass
+{
+public:
+	void foo() //non cost member function	
+	void bar()const //const member function
+private:
+	int x;
+}
+
+
+Myclass g;
+
+void Myclass::bar()const
+{
+	x = 10 //hata
+	g.x = 10 // hata değil. this ile ulaşmıyoruz.
+	foo();// hata .this.foo() olduğu için. foo() const olsaydı legal olurdu.
+}
+
+int main()
+{
+	const Myclass cm;
+	cm.foo();// sentaks hatası
+	cm.bar(); hata yok.
+} 
+
+*********************
+aşağıdaki fonksiyonun geri dönüş değeri nedeniyle hata var. geri dönüş değeri eğer const Myclass* foo()const olsaydı sıkıntı yok.
+class Myclass
+{
+public:
+Myclass* foo()const
+{
+	return this;
+}
+}
+*********************
+mutable (bu keyword modern cpp öncesi de vardı): tanımladığı nesneye => bu öyle bir eleman ki bunun değerinin değişmesi sınıf nesnesinin değerinin değismesi ile aynı değil demek.
+
+*mutable nesneler sınıf ile alakası olmayan nesnelerin const'tan etkilenmesini engeller.
+*mutable'de vurgulanan bu nesne sınıf değişkeninin değeri ile alakalı değil.
+
+******************************************
+ctor:
+-ctor fonksiyonu tamamlanmadan nesne hayata gelmez.
+-ctor non-static üye fonksiyonudur ve c++da static ctor yok.
+-ctor geri dönüş değeri kavramı yok.bu alanı boş bırak.
+-const üye fonksiyon olamaz.
+-ctor private yapılabilir. Yani ciient kodlar nesne oluşturamaz.
+-overload edilebilir.
+-nokta yada ok operatorü ile çağrılamaz.
+*bir nesneyi hayata getirir.
+
+dtor:
+-dtor non-static üye fonksiyonudur ve c++da static ctor yok.
+-dtor geri dönüş değeri kavramı yok.bu alanı boş bırak.
+-const üye fonksiyon olamaz.
+-dtor private yapılabilir. Yani cilient kodlar nesne oluşturamaz.
+-overload edilemez. parametresi yok.
+-nokta yada ok operatorü ile çağrılabilir ama sadece 1 yerde özel olarak.
+*kaynakları geri verir.
+*************************************************
+
+RAII akronimi(idiom) C++'a yerleşmiş bir akronim: 
+	-Resource Acquisition Is Initialization 
+
+default ctor:
+	-ya parametresi olmayacak ya da parametrenin tamamı varsayılan arguman olacak.
+special member functions (modern cpp öncesi sayısı 4 idi şimdi 6):
+*bu fonksiyonların kodları derleyici tarafından yazılabiliyor.
+	-default ctor
+	-dtor
+	-copy ctor
+	-copy assignment
+	-move ctor (C++11)
+	-move assignment(C++11)
+*not declared, user declared(default derleyiciye bu kodu sen yazacaksın demek için kullanılır),implicitly declared deleted or implicitly declared defaulted olabilir.
+
+*C++11'den sonra fonksiyonların delete edilmesi dil sentaksına eklendi. !!Bunun dinamik nesnelerin silinmesi için kullanılan delete ile alakası yok => void func(int) = delete.
+*void func(int) = delete. => böyle bir fonksiyon var ama bu fonksiyonayapılan çağrı syntax hatası oluştursun.

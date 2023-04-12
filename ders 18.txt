@@ -1,0 +1,19 @@
+ders 18
+İdioms : dile özgü kullanılan teknikler.
+patern: dile özgü değil diğer dillerde de geçerli teknik.
+**********************************
+Konular:
+	-Reference Qualifiers
+	-Friend declarations
+	-Operator overloading başlangıç
+	-Static data members & static member functions (başlanmadı).
+	
+****************************************
+
+*return edilen fonksiyon ifadesi örtülü dönüşüm ile RValue olur.
+
+*referance Qualifiers: Cpp11 ile dile eklendi. 
+	-void set()& = > bu fonksiyon sadece LValue için çağrılır.
+	-void set() && = > bu fonksiyon sadece RValue için çağrılır.
+	
+*most vexing parse , maximal manch ?

@@ -1,0 +1,11 @@
+ders 30
+************
+konular: inheritance devam, Runtime polimorfizm
+*******************
+
+-using C++'ın en çok overload edilen bildirimlerinden biridir.
+-inherited ctor: modern C++ ile geldi.
+
+-abstract class: bu sınıf türünden nesne oluşturulamaz.
+-concrete class: bu sınıf türünden nesne oluşturulabilir.
+-virtual dispatch

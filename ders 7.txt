@@ -1,0 +1,15 @@
+ders 7
+********************
+konular: constexpr
+************************
+
+-compiler extension: dilin standart bir olayı değil. derleyicilerin kullanıcının işini kolaylaştırmak için eklediği yardımcı özellikler: int z = 0b100101 mesela..0b modern cpp öncesi dilin kuralı değildi.
+-122'333'545 => ' digit seperator.
+
+! -250'deki - negatif değer işareti değil operator.
+constexpr: 
+	-anahtar sözcüktür.
+	-const türdür fakat constexpr bir tür değildir.
+	-ilk değer veren ifadenin const değer olduğu güvence altına alınıyor.
+	-constexpr x = 5; x'in türü const
+	-fonksiyonları niteleyebilirsiniz. Tüm parametrelerine const değer ile çağrı yaparsanız fonksiyon compile time'da çağırılır.

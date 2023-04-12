@@ -1,0 +1,16 @@
+ders 16
+*****************
+konular: 
+	-move semantics
+	-default member initializer 
+	-delegated ctor
+	-reference qualifiers
+	-temporary objects
+	-copy elision and mandatory 
+	-copy elision
+	-conversion ctor
+************************************
+
+* swap kodu yazarken temp objeyi tmp class ile yap.
+
+*geçici nesneler compiler tarafından oluşturabilir ya da biz oluşturabiliriz.

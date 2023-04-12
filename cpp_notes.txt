@@ -1,0 +1,1 @@
+her cpp dosyasının kendine özgü tanımlaması olsun istiyorsak static keyword kullanabiliriz.

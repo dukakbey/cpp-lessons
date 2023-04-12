@@ -1,0 +1,36 @@
+ders 15
+**********************************
+konular: class special member functions
+************************
+*ONEMLİ: nesnelerin değerleri aynı olabilir ama adressleri aynı olmaz.karşılaştırma operatoru nesneleri karşılaştırır = >> this == &other yerine *this == *other kullanamayız.
+!!ctor initializer list{}
+
+*data type(veri tipi) ve data kategorisi farklı şeyler karıştırma.
+*ortada bir sınıf yoksa sağ taraf değerini kaynak olarak kullanmak ile sol taraf değerini kullanmak arasında bir fark yok.
+* sınıfta ctor init ederken derleyici hata algılarsa bu default ctor delete edilir. private altında sınıf varsa copy ctor delete edilir.
+*deep copy , shallow copy ????
+
+
+-default member initializer 
+-delegated constructor
+-referance qualifiers
+-temporary objects : nesneler ama kaynak kod açısından baktığımızda o isimleri betimleyen isim yok.
+-copy elision
+	*mandatory copy elision
+-conversion ctor
+
+default member initializer :
+-c++ 11 sonrası geldi.
+-ctor'a girmeden değişkenler tanımlanır. hayata geçer.
+-{} bu sentaks value initialization
+
+*******************
+Myclass() default init
+Myclass{} value init
+*geçici nesne işini görüyor ise geçici nesne kullan.
+
+
+Gelecek Ders:
+*geçici nesnelerin value type'ı nedir?? =>>> PR Value Expression
+*ne zaman hayata gelirler ne zaman ölürler??
+*geçici nesne oluşturma ifadeleriyle neler yapabiliriz ? 

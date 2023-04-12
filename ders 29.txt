@@ -1,0 +1,10 @@
+ders 29
+*******************
+konular:kalıtım
+**********************
+-C++ 'da yer alan kalıtım nesne yönelimli programlamadan biraz farklı.
+
+-kalıtım deyince C++ programcısı için gelenekselden daha kapsamlı.
+
+-has a relationship
+-is a relationship

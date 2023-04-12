@@ -1,0 +1,39 @@
+ders 25
+***********
+konular: namespace
+***********************
+-unnamed namespace (modern cpp öncesi de vardı):
+	-static keyword aşırı yüklendiği için kullanılabilir.
+	-altındaki ögeler internal linkage'a (iç bağlantıya ait)  ait.
+		-static int g = 10; static void foo() ile 1 numaradaki tanım aynı anlamda
+	-1) namespace
+	{
+		int g;
+		int foo;
+	}
+	
+C++ scopes:
+	-namespace scopes
+	-class scopes
+	-function scope
+	-function prototype scope
+	-block scope
+	
+-namespace'teki varlıklar globaldir, sadece bir isim kapsamına alınıyor.
+-namespace'te yer alan ismi nitelemeden kullanmak için aşağıdaki araçlardöan birini kullanmalıyız:
+	-using declaration
+	-using namespace (directive) decl;
+	-ADL (Argument Dependent Lookup) => derleyici fonksiyona gönderilen arguman eğer namespace içinde ise tanıyıp fonksiyonu da o namespace ile tamamlıyor
+	
+
+-ostream eğer incomplete type olarak kullanılıyorsa iosfwd dosyasını include etmek yeterli ama ostream inline olarak tanımlanması gerekiyorsa ostream'in tanımını derleyici görmek zorunda.
+
+-namespace alias=> namespace print sc::cout;namespace print = sc;
+
+-using bildirimi: 
+	-bildirimin de kapsamı var. Global,main ... altında yapabilirsin.
+	-cpp 17 ile using namespace s, namespace a yapabilirsin.
+	
+-ADL ile isim aramada önce scope içi ara sonra dışarı bak gibi öncelik sırası yok. Bu yüzden dışarda aynı fonksiyonun argumanı aynı namespace ile arguman alacak şekilde tanımlamak ambigiuty oluşturur. 
+
+!!!inline namespace(inline function ile alakası yok) => inline anahtar sözcüğünün overload edildiği yerlerden biri namespace'dir.

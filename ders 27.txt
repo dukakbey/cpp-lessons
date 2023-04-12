@@ -1,0 +1,85 @@
+ders 27
+**********************
+konular: string
+************************
+jossutis'in STL kitabını oku.
+parametrik yapılar:
+	-str.xxx(const char *p)cstring: sizden null terminating parametre istiyor.string literal demek const char dizi demektir.
+	-str.xxx(const char *p,string::size_type):data. bu adresten başlayarak bu kadar karakter.//taşma olursa sıkıntı
+	
+	-str.xxx(const char *ps,const char *pe)//
+	-str.xxx(const string&) string parametre
+	-str.xxx(const string&,string::size_type idx) substring
+		-substring ctor'da karakter sayısı geriye kalan karakter sayısından fazla ise yettiği kadar karakter kullanılır. Tanımsız davranış olmaz.
+	-str.xxx(const string&,string::size_type idx,s tring::size_type n) substring n tane
+	-str.xxx(string&&) string parametre
+	
+	-str.xxx(string::size_type,char) fill parametre
+	
+	-str.xxx(initializer_list<char>); //fill param:
+		bu da initializer_list sınıfı => {1,2,3,4}
+		*****initializer_list ile yollanan parametre 2 adet pointer sarmalayan sınıf nesnesi yollanır. yani bellekte 2*4 byte = 8 byte yer kaplar.
+	
+	
+!dikkat moved from state tekrar kullanılabilir.
+deep copy = auto s2 = s1; kopyalama sonrası s1 ve s2 nin bellek alanı ayrı oluyor.
+
+*string'de char parametreli ctor yok. initializer_list(içinde char olabilir.) parametreli ctor var.
+
+!!! string sınıfında yazı sonunda nullptr var gibi bir durum yok. 
+!!! Sonunda null karakter olma zorunluluğu cstring'e ait.
+
+*range based loop for(auto x:mylist)
+*initializer_list ile ulaştığınız nesneler (mesela iterator) const nesnedir sadece okuma yapabilirsin.
+
+*küme parantezi ile init edersen initializer_list'in çnceliği vardır.
+
+-string s1(52,'A');
+-string s1{52,'A'};
+
+
+*Myclass(int,int)
+*Myclass{int,int}=> Myclass(std::initializer_list<int>)
+
+-string::npos => olabilecek en büyük değer. nerede kullanılır:
+	-arama fonksiyonların geri dönüş değeri index bulursa index bulamazsa index döndürür.
+	
+
+-string'de aranan değer bulunamadığında döndürdüğü değer=>  npos
+-npos => constexpr static bir değerdir.
+-str.substr(n. index, kaç karakter istediğimiz)
+
+
+!!!!köşeli parantez işlevine geçersiz index verilmesi durumunda tanımsız davranış olur. ve exception fırlatmaz. !!!fakat bu işlemi .at ile yaparsan exception fırlatır= >> str[345] vs str.at(345)
+
+-str.front() = size_t değer
+-str.begin() ilk elemanın adresi.
+-str to cstr = > str.cstr 
+!!!!str.cstr() sana adres döndürüyor ama o blok realocate edildiyse dangling pointer olur.
+
+-str.data() => dinamik bellek bloğunun adresini döndürür.
+
+-string 'de iterator interface ve index interface vardır.
+	-iterator container ile alakalı 
+	-index 'in container ile alakası yok. 
+	
+-str.erase() index ya da iterator alır.iterator o konumdaki karakteri siler.
+
+-str.assign():
+	-range assign
+	-initializer_list assign
+	-...
+	
+
+-str.assign(ar,3); ar adresinden başlayarak 3 karakter.  otomatik realocate yapa(sadece bu değil bütün size arttıran fonksiyonlar).
+
+-str.resize(20,'!') sınıfın size'ını değiştirir ve boş kalan kısmı null yapmak yerine ! olarak kaydeder.
+
+-string nesnesinin max uzunluğunu biliyorsak başlangıçta reserve ile max kapasite vermeliyiz.
+
+- append dışındaki eklemelerde kapasite yetersiz kalıyorsa realocate olur.
+
+*********sona yapılan eklemeler constant time complexity fakat sona yapılmayanlar constant time değil.
+-str.insert()
+
+-str.erase() range siler str.clear() ise bütün elemanları siler.

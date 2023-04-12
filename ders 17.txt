@@ -1,0 +1,55 @@
+ders 17
+*****************
+konular: 
+	-temporary object, explicit conversion,explicit keyword,most vexing parse, copy elision,return value optimization
+************************************
+
+* swap kodu yazarken temp objeyi tmp class ile yap.
+
+*geçici nesneler :
+	-compiler tarafından oluşturabilir ya da biz oluşturabiliriz.
+	-geçici nesne oluşturma şansı olmasaydı otomatik ömürlü nesne yaratacaktır ve scope leakage oluşabilir. Nesnelerin çoğu kaynak tutuyor.
+	-kullanılmazsa kaynaklar gereksiz yere bloke ediliyor.
+	-işini gördüğü yerde geçici nesne kullan.
+	
+*conversion constructor:
+	-sınıf türünden olmayan bir ifadenin sınıf türüne dönüştürülmesini sağlar. 
+	
+*conversion kaliteleri:
+	1) standart conversion
+	2) user defined conversion (UDC): bizim tanımladığımız class'ları birbirine eşitlememiz durumunda. Arka arkaya 2 userdefined conversion yapılamaz.
+	3) variadic conversion
+1 + 2 yapılabilir. tersi de olabilir.
+
+*Explicit keyword ile yapılan dönüşümler implicit dönüşümü engeller. Sınıfınızın tek parametreli ctor'larını aksi bir durum olmadıkça explicit yapınız.
+*explicit te copy ctor çalışmaz.
+*explicit bildirimde olacak tanımda olmayacaktır. Static keyword için de aynı durum geçerlidir.
+*explicit conversion overload set'e hiç girmez.
+
+
+intialization types:
+	-direct initialization: Myclass m1(12)
+	-direct list initialization: Myclass m2{13}
+	-copy initialization: Myclass m3 = 14;
+	
+* bir bildirim hem fonksiyon bildirimi hem de sınıf tanımı anlamına geliyorsa derleyici tarafından fonksiyon olarak ele alınır => most vexing parse
+*class A varsa A() bir fonksiyon türü dikey pointer. aynı anlam => A(*)():
+	- fonksiyon bildirimi parantezinden kurtarmak için => B bx((A())) şeklinde tanımlanabilir.
+	
+COPY ELISION: elision birşeyin yapılmaması atlanması anlamında kullanılabilir. sınıflarda kopyalamanın yapılmaması demektir.
+	-sınıf fonksiyonu eğer geçici nesne ile çağırılırsa copy elision yapılır.
+	-bir fonksiyonun parametre değişkeni bir class türünden ise ve parametre değeri geçici nesne tipinde ise cpp 17'de bu gibi durumlarda copy elision mandatory (zorunlu) olarak yapılır. 
+	- bu durum cpp17'ye kadar bir optimizasyon tekniği idi fakat cpp17 sonrası zorunlu hale geldi.
+	-eficiency üzerinde çok etkili.
+	-copy elision move ctor'dan daha verimli.
+	---* copy elision>move>copy
+	
+RETURN VALUE OPTIMIZATION (copy elision tipi): 
+	-cpp17'ye kadar derleyici optimizasyonu idi sonrasında zorunlu hale getirildi. 
+	-
+	
+Named Return Value Optimization (NRVO):
+	-mandatory değildir.	
+	-derleyici yapmak zorunda değil ama yüzde 99 yapılacağı düşünülebilir.
+	-debug durumunda bu optimizasyon yapılmaz.
+	

@@ -1,0 +1,6 @@
+ders 8
+************************
+konular: Inline
+**************************
+
+*inline variable cpp17 ile geldi.

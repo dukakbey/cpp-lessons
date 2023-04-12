@@ -1,0 +1,91 @@
+ders 13
+*************************
+konular: classses devam, special member functions
+*************************************
+
+*C++ 20 standartları ile derleyici special member functions'a ek olarak bazı karşılaştırma fonksiyonlarının kodunu yazabiliyor.
+
+*Special Member Functions*
+default constructor
+
+copy constructor
+copy assignment
+
+move constructor
+move assignment
+**********************************
+not declared
+user declared 
+implicitly declared:
+	-bu dönüşümde eğer syntax hatası olursa default'u delete eder.
+*********************************
+Sc() = delete: modern C++ ile geldi. bu araç öncesinde delete yerine fonksiyon private yapılıyordu.
+Sc() = default: ben bildiriyorum ama derleyici tanımlasın.
+************************
+ömür kategorileri:
+	-static storage class ,
+	-otomatik storage class,
+	-dynamic storage class, 
+	-thread local storage class 
+	-life span
+
+*global değişkenler static ömürlü ve bu değişkenlerin hayata gelmesi main fonksiyonunun çağrılmasından önce.
+*kaynak kodda birden fazla global değişken varsa bunların hayata gelme sırası bildirim sırasıdır. stack sistemi gibi çalışır.
+
+
+
+*static initialization fiasco(idiomatik bir terim)
+	-birçok cpp var. Bu cpp'lerde global değişkenler var. Önce hangisinin ctor olacak bunu sadece Allah bilir. birbirine bağımlılıkları varsa sıkıntı yaratır.
+
+*static değişkenler hayata gelmesi için tanımlandığı fonksiyonlar çağrılması gerekir.
+
+*otomatik ömürlü değişkenler:
+	- fonksiyonların parametre değişkenlerin
+	- fonksiyonların ana bloğu içinde static keyword olmadan tanımlanan yerel değişkenler.
+	
+*destructor closing brace'e gelince çağrılır.
+*****************************************************
+dinamik ömürlü nesneler new ile hayata başlar ve delete ile hayatları biter. new constructor çağırır ve delete destructure çağırır.
+
+** new ile nesneyi gösteren pointer oluşturulur.
+!!!new operatoru ile operator new adlı standart C++ işlemi aynı değil.
+*operator new fonksiyonu malloc gibi başarısız olma ihtimali olan bir fonksiyondur. başarısız olursa exception throw döndürür.
+** malloc yerine new yazılmasının nedeni exception fırlatmak.
+
+free => delete && malloc => new
+
+example:
+new Fighter dediğimizde oluşacak kod:
+//pseudo code:
+	-void *vp = operator new(sizeof(Fighter))
+	-hata varsa exception throw
+	-Fighter *p = static_cast<Fighter *>(vp)->Ctor()
+	
+delete p;	
+//pseudo code:
+	- p->~Fighter()
+	- operator delete(p);
+
+************************************
+derleyicinin yazdığı ctor'lar:
+	-inline
+	-non-static
+	-public
+
+derleyicinin yazdığı default ctor :
+	- bütün değişkenleri default init eder(çöp değer ile hayata başlar).
+***************************************
+default ctor const değişkeni init edemez. bu nedenle derleyici default ctor'u delete eder.
+
+class Myclass
+{
+public:
+
+private:
+	const int mx;// default init edilemez.
+	int& r; //default init edilemez
+	int&& r; //default init edilemez
+
+};
+********************************************
+

@@ -1,0 +1,35 @@
+ders 23
+*****************************
+konular: mere singletone,nested types,
+gelecek ders: containment,namespaces 
+****************************
+
+-collection = container
+
+
+-------------------------------------------------
+sequence containers:
+	-std::string
+	-std::vector
+	-std::deque
+	-std::list(doubly linked list)
+	-std::forward_list(C++11) (sigly linked list)
+	-std::array(C++11)
+-------------------------------------------------
+associative containers
+	-std::set(binary search tree)
+	-std::multiset(binary search tree)
+	-std::map(binary search tree)
+	-std::multimap(binary search tree)
+----------------------------------------------------
+unoredred associative containers
+	-std::unoredred_set (C++11)(hash table)
+	-std::unoredred_multiset(C++11)(hash table)
+	-std::unoredred_map(C++11)(hash table)
+	-std::unoredred_multimap(C++11)(hash table)
+----------------------------------------------------------
+
+std::erase(vector,this) cpp20 ile geldi.
+*ADL: argument dependent lookup
+
+*range based for loop => for(vector<class>:i)
